@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"/>
+  <title>Play music</title>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<div class="player">
+  <div class="container">
+    <div class="icons">
+      <a href="#"><i class="fa fa-bars"></i></a>
+      <h1>MY MUSIC</h1>
+      <a href="#"><i class="far fa-heart"></i></a>
+    </div>
+
+    <div class="img">
+      <img src="https://i.pinimg.com/originals/0e/d3/5c/0ed35c271377e77a3ddd7ca19d4adb9b.jpg" alt=""/>
+    </div>
+
+    <div class="title">
+      <h1>KING KONG SONG</h1>
+      <p>Cool Artists - No Name</p>
+    </div>
+
+    <div class="time">
+      00:00
+      <span></span>
+        00:00
+    </div>
+
+<!--    <div class="seek">-->
+<!--      <div class="fill"></div>-->
+<!--    </div>-->
+    <div class="seek">
+      <label>
+        <input type="range" min="0" max="100" class="fill" value="0" />
+      </label>
+    </div>
+
+  </div>
+  <div class="audio-btns">
+    <div class="slide-volume">
+      <label>
+        <i class="fas fa-volume-down icon-show"></i>
+        <input type="range" min="0" max="1" class="volume" value="0.5" step="0.05"/>
+      </label>
+    </div>
+    <div class="play-btns">
+      <a href="#" onclick="prevAudio()"><i class="fa fa-backward"></i></a>
+      <a href="#" class="play-pause" onclick="togglePlayPause()"><i class="fa fa-play"></i></a>
+      <a href="#" onclick="nextAudio()"><i class="fa fa-forward"></i></a>
+    </div>
+    <div class="repeat-btns">
+      <a href="#"><i class="fa fa-retweet"></i></a>
+      <span>
+        <button class="decrease" onclick="decreaseVolume()">-</button>
+        <a href="#" class="volume-up"><i class="fa fa-volume-up"></i></a>
+        <button class="increase" onclick="increaseVolume()">+</button>
+      </span>
+      <a href="#"><i class="fa fa-retweet"></i></a>
+    </div>
+  </div>
+
+</div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
