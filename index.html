@@ -53,16 +53,16 @@
       </label>
     </div>
     <div class="play-btns">
-      <a href="#" onclick="prevAudio()"><i class="fa fa-backward"></i></a>
-      <a href="#" class="play-pause" onclick="togglePlayPause()"><i class="fa fa-play"></i></a>
-      <a href="#" onclick="nextAudio()"><i class="fa fa-forward"></i></a>
+      <a href="#" class="next-audio"><i class="fa fa-backward"></i></a>
+      <a href="#" class="play-pause"><i class="fa fa-play"></i></a>
+      <a href="#" class="prev-audio"><i class="fa fa-forward"></i></a>
     </div>
     <div class="repeat-btns">
       <a href="#"><i class="fa fa-retweet"></i></a>
       <span>
-        <button class="decrease" onclick="decreaseVolume()">-</button>
+        <button class="decrease">-</button>
         <a href="#" class="volume-up"><i class="fa fa-volume-up"></i></a>
-        <button class="increase" onclick="increaseVolume()">+</button>
+        <button class="increase">+</button>
       </span>
       <a href="#"><i class="fa fa-retweet"></i></a>
     </div>
@@ -70,6 +70,83 @@
 
 </div>
 
-  <script src="js/script.js"></script>
+  <!-- <script src="js/script.js"></script> -->
+  <script src="js/playaudio.js"></script>
+  <script>
+    let playBtn = document.querySelector('.play-pause');
+    let sliderInputAudio = document.querySelector('.fill');
+    let labelCurrentTime = document.querySelector('.time');
+    let decreaseVolumeBtn = document.querySelector('.decrease');
+    let increaseVolumeBtn = document.querySelector('.increase');
+    let muteOrUnmuteBtn = document.querySelector('.volume-up');
+    let iconMute = document.querySelector('.volume-up i');
+    let imageCover = document.querySelector('img');
+    let nextAudioBtn = document.querySelector('.next-audio');
+    let prevAudioBtn = document.querySelector('.prev-audio');
+    let listCoverImage = [
+      'https://i.pinimg.com/originals/0e/d3/5c/0ed35c271377e77a3ddd7ca19d4adb9b.jpg',
+      'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTQlYzL-pc2sGt5kiM4weh8uyr65xcGTB6WJZ9EgP7H6HkoYVcY',
+      'https://6.viki.io/image/143428ab5a6d4b9dbf16f6db7bc87f0c.jpeg?s=900x600&e=t'
+    ];
+    let listSong = ['audio/audio_1.mp3', 'audio/audio_2.mp3', 'audio/audio_3.mp3'];
+
+    let config = {
+      linkAudio: 'audio/audio_1.mp3',
+      playBtn: playBtn,
+      sliderInputAudio: sliderInputAudio,
+      sliderInputAudioColor: '#e15a2f',
+      labelCurrentTime: labelCurrentTime,
+      stepVolume: 0.25,
+      singleAudio: false,
+      totalSong: 3,
+      imageCover: imageCover,
+      listSong: listSong,
+      listCoverImage: listCoverImage,
+      defaultVolume: 0.5,
+    };
+
+    let audioClass = new PlayAudio(config);
+    //play audio
+    playBtn.addEventListener('click', function(){
+      audioClass.togglePlayPause();
+    });
+
+    //update currentTime;
+    let audio = audioClass.getAudio();
+    audio.addEventListener('timeupdate', function(){
+      audioClass.updateAudioCurrentTime();
+    });
+
+    //drap slide audio
+    sliderInputAudio.addEventListener('input', function(){
+      let inputValue = (this.value - this.min) / (this.max - this.min) * 100;
+      audioClass.updateAudioSlideDrag(inputValue);
+    });
+
+    //volume action
+    decreaseVolumeBtn.addEventListener('click', function(){
+      audioClass.decreaseVolume();
+    });
+    increaseVolumeBtn.addEventListener('click', function(){
+      audioClass.increaseVolume();
+    });
+
+    //mute or unmute audio
+    muteOrUnmuteBtn.addEventListener('click', function(){
+      audioClass.muteOrUnmuteAudio(iconMute);
+    });
+
+    //next audio
+    nextAudioBtn.addEventListener('click', function(){
+      audioClass.nextAudio();
+    });
+
+    //prev audio
+    prevAudioBtn.addEventListener('click', function(){
+      audioClass.prevAudio();
+    })
+   
+   
+  </script>
 </body>
 </html>

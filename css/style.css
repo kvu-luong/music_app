@@ -125,6 +125,11 @@ img{
   height: 5px;
   cursor: pointer;
   -webkit-appearance: none;
+  background: linear-gradient(to right, 
+                      gray 0%
+                      gray 3%, 
+                      #fff 3%, 
+                      white 100%);
   outline: none;
 }
 

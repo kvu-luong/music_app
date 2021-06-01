@@ -17,7 +17,7 @@ let currentSong = 0;
 window.onload = playSong;
 
 function playSong(){
-  audio.src = `http://localhost:63342/playmusicapp/audio/${listSong[currentSong]}`;
+  audio.src = `audio/${listSong[currentSong]}`;
   let play = audio.play();
   if(play !== undefined) {
     play.then(()=> {
