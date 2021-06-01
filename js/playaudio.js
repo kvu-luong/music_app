@@ -87,7 +87,11 @@ class PlayAudio{
 
   updateAudioSlideDrag(inputValue){
     this.updateAudioSlide(inputValue);
-    this.audio.currentTime = inputValue * this.audio.duration / 100;
+    try{
+      this.audio.currentTime = inputValue * this.audio.duration / 100;
+    }catch(e){
+      // throw new Error("Not start audio yet!!!");
+    }
   }
 
   convertTime(seconds){
